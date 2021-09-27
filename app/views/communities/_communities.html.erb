@@ -1,0 +1,10 @@
+<% if communities.any? %>
+  <ul class="list-unstyled mt-2">
+    <% communities.each do |community| %>
+      <li class="d-flex">
+        <%= community.title %>
+      </li>
+    <% end %>
+  </ul>
+  <%== pagy_bootstrap_nav(@pagy) %>
+<% end %>
