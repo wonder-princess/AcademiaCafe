@@ -11,7 +11,7 @@ class CommunitiesController < ApplicationController
   end
 
   def new
-    @community =Community.new
+    @community = Community.new
   end
 
   def create

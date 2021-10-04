@@ -1,13 +1,13 @@
 class UsersController < ApplicationController
   
-  # 検索した際に結果を表示したい場合、indexを定義するか
+  # 検索した際にのみ結果を表示したい場合、indexを定義するか
   def index
-    @pagy, @users = pagy(User.order(id: :desc), items: 25)
+    @pagy, @users = pagy(User.order(id: :desc), items: 10)
   end
 
   def show
     @user = User.find(params[:id])
-    @pagy, @community = pagy(@user.microposts.order(id: :desc))
+    @pagy, @community = pagy(@user.community.order(id: :desc))
   end
 
   def new
@@ -31,7 +31,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      flash[:success] = 'タスクを編集しました。'
+      flash[:success] = 'プロフィールを編集しました。'
       redirect_to @task
     else
       flash.now[:danger] = '更新に失敗しました。'
@@ -60,6 +60,6 @@ class UsersController < ApplicationController
   end
   
   def user_search_params
-    params.fetch(:search, {}).permit()
+    params.fetch(:search, {}).permit(:id, :name, :sort)
   end
 end

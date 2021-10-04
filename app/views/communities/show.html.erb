@@ -1,2 +1,20 @@
-<h1>Communities#show</h1>
-<p>Find me in app/views/communities/show.html.erb</p>
+<div class="mt-4 row">
+  <div class="col-sm-12">
+    <div class="card">
+      <div class="card-header"><%= community.title %></div>
+      <div class="card-body"><%= community.uls %></div>
+    </div>
+    <ul>
+      <li><div class="card"><div class="card-body"><%= community.tag_1 %></div></div></li>
+      <li><div class="card"><div class="card-body"><%= community.tag_2 %></div></div></li>
+      <li><div class="card"><div class="card-body"><%= community.tag_3 %></div></div></li>
+      <li><div class="card"><div class="card-body"><%= community.tag_4 %></div></div></li>
+      <li><div class="card"><div class="card-body"><%= community.tag_5 %></div></div></li>
+    </ul>
+    <p><%= community.introduction %></p>
+    <%= link_to '編集', edit_user_path(community) %>
+    <% if current_user == community.user %>
+      <%= link_to "編集", community, method: :edit, class: 'btn btn-primary btn-sm' %>
+    <% end %>
+  </div>
+</div>

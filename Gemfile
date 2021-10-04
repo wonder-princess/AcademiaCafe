@@ -70,3 +70,4 @@ gem 'faker'
 gem 'gimei'
 
 gem 'carrierwave'
+

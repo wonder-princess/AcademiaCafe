@@ -1,0 +1,21 @@
+<div>
+  <div class="card">
+    <%= link_to 'コミュニティ詳細', community_path(community), class: "text-decoration-none" %>
+    <div class="card-header"><%= community.title %></div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item"><%= community.kind %></li>
+      <li class="list-group-item"><%= community.url %></li>
+    </ul>
+    <div class="card-body"><%= community.introduction %></div>
+  </div>
+  <div class="">
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item"><%= community.tag_1 %></li>
+      <li class="list-group-item"><%= community.tag_2 %></li>
+      <li class="list-group-item"><%= community.tag_3 %></li>
+      <li class="list-group-item"><%= community.tag_4 %></li>
+      <li class="list-group-item"><%= community.tag_5 %></li>
+    </ul>
+  </div>
+</div>
+

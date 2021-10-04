@@ -1,0 +1,31 @@
+<%= form_with(model: community) do |f| %>
+  
+  <%= f.label :title, "タイトル" %>
+  <%= f.text_field :title %>
+ 
+  <%= f.label :kind, "コミュニティタイプ" %>
+  <%= f.select :kind,  [["slack", 1], ["discode", 2]], ["other", 9]], include_blank: "選択して下さい" %>
+  
+  <%= f.label :url, "URL" %>
+  <%= f.text_field :url %>
+
+  <%= f.label :, "タグ" %>
+  <%= f.text_field :tag_ %>
+
+  <%= f.label :, "タグ" %>
+  <%= f.text_field :tag_ %>
+
+  <%= f.label :, "タグ" %>
+  <%= f.text_field :tag_ %>
+
+  <%= f.label :, "タグ" %>
+  <%= f.text_field :tag_ %>
+
+  <%= f.label :, "タグ" %>
+  <%= f.text_field :tag_ %>
+
+  <%= f.label :, "コミュニティ概要" %>
+  <%= f.text_area :introduction %>
+
+  <%= f.submit "保存", class: 'btn btn-primary btn-sm' %>
+<% end %>

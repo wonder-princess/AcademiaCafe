@@ -1,44 +1,63 @@
 <header class="mb-4">
-  <div class="btn-group">
-    <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-      Right-aligned menu example
-    </button>
-    <div class="dropdown-menu dropdown-menu-end">
-      <div class="search-form">
-        <%= form_with(scope: :search, url: communities_path, method: :get, local: true) do |f| %>
-          <div class="field">
-            <%#= f.label(:keyword, communities.keyword(:keyword)) %>
-            <%= f.text_field :keyword, value: @search_params[:keyword] %>
-          </div>
-      
-          <div class="field">
-            <%= f.collection_radio_buttons(:kind, Community.kinds, :first, :first) do |r| %>
-              <%= tag.div(class: 'form-check form-check-inline') do %>
-                <%= r.radio_button(checked: r.value == @search_params[:kind], class: 'form-check-input') + f.label(Community.human_attribute_name("kind.#{r.text}"), class: 'form-check-label') %>
-              <% end %>
-            <% end %>
-          </div>
-          
-          <div class="field">
-            <%#= f.label(:kind, User.human_attribute_name(:kind)) %>
-            <%#= f.collection_check_boxes(:kind, User.kinds, :first, :first) do |c| %>
-              <%#= tag.div(class: 'form-check form-check-inline') do %>
-                <%#= c.check_box(checked: c.value == @search_params[:kind], class: 'form-check-input') + f.label(User.human_attribute_name("kind.#{c.text}"), class: 'form-check-label') %>
-              <%# end %>
-            <%# end %>
-          </div>
-          
-          <div class="field">
-            <%#= f.label(:prefecture_id, User.human_attribute_name(:prefecture_id)) %>
-            <%#= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, selected: @search_params[:prefecture_id], include_blank: t('helpers.select.include_blank')) %>
-            <%= select_tag :sort, options_for_select('新しい順': 'id asc', '古い順': 'id desc', include_blank: t('helpers.select.include_blank')) %>
-          </div>
-      
-          <div class="actions">
-            <%= f.submit(t('helpers.submit.search')) %>
-          </div>
+  <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+    <div class="container-fluid ps-5 pe-5">
+      <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+        <% if logged_in? %>
+          <ul class="navbar-nav">
+            <a class="navbar-brand" href="/">ホーム</a>
+            <a class="navbar-brand" href="create_community">コミュニティ</a>
+            <a class="navbar-brand" href="My profile">ユーザー</a>
+          </ul>
+        <% else %>
+          <ul class="navbar-nav">
+            <a class="navbar-brand" href="/">ホーム</a>
+            <a class="navbar-brand" href="Signup">コミュニティ</a>
+            <a class="navbar-brand" href="Signup">ユーザー</a>
+          </ul>
         <% end %>
       </div>
+      <div class="btn-group">
+        <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+          Right-aligned menu example
+        </button>
+        <div class="dropdown-menu dropdown-menu-end">
+          <div class="search-form">
+            <%= form_with(scope: :search, url: communities_path, method: :get, local: true) do |f| %>
+              <div class="field">
+                <%#= f.label(:keyword, communities.keyword(:keyword)) %>
+                <%#= f.text_field :keyword, value: @search_params[:keyword] %>
+              </div>
+          
+              <div class="field">
+                <%= f.collection_radio_buttons(:kind, Community.kinds, :first, :first) do |r| %>
+                  <%= tag.div(class: 'form-check form-check-inline') do %>
+                    <%#= r.radio_button(checked: r.value == @search_params[:kind], class: 'form-check-input') + f.label(Community.human_attribute_name("kind.#{r.text}"), class: 'form-check-label') %>
+                  <% end %>
+                <% end %>
+              </div>
+              
+              <div class="field">
+                <%#= f.label(:kind, User.human_attribute_name(:kind)) %>
+                <%#= f.collection_check_boxes(:kind, User.kinds, :first, :first) do |c| %>
+                  <%#= tag.div(class: 'form-check form-check-inline') do %>
+                    <%#= c.check_box(checked: c.value == @search_params[:kind], class: 'form-check-input') + f.label(User.human_attribute_name("kind.#{c.text}"), class: 'form-check-label') %>
+                  <%# end %>
+                <%# end %>
+              </div>
+              
+              <div class="field">
+                <%#= f.label(:prefecture_id, User.human_attribute_name(:prefecture_id)) %>
+                <%#= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, selected: @search_params[:prefecture_id], include_blank: t('helpers.select.include_blank')) %>
+                <%= select_tag :sort, options_for_select('新しい順': 'id asc', '古い順': 'id desc', include_blank: t('helpers.select.include_blank')) %>
+              </div>
+          
+              <div class="actions">
+                <%= f.submit(t('helpers.submit.search')) %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
+  </nav>
 </header>

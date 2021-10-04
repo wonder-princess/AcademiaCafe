@@ -1,7 +1,7 @@
 class ToppagesController < ApplicationController
   def index
     # @community = communities.build
-    # @pagy, @communities = pagy(communities.order(id: :desc))
+    @pagy, @communities = pagy(Community.order(id: :desc))
   end
 
   def userpolicy

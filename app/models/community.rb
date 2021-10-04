@@ -1,6 +1,6 @@
 class Community < ApplicationRecord
   # has_many :tags
-  # belongs_to :user;
+  belongs_to :user;
   
   enum kind: { slack: 1, discode: 2, other: 3 }
   

@@ -2,7 +2,14 @@
   <ul class="list-unstyled">
     <% users.each do |user| %>
       <li class="mb-3 d-flex">
-        
+        <div class="card">
+          <%= link_to 'ユーザ―詳細', user_path(user), class: "text-decoration-none" %>
+          <div class="card-header"><%= user.name %></div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"><%= user.id %></li>
+          </ul>
+          <div class="card-body"><%= community.introduction %></div>
+        </div>
       </li>
     <% end %>
   </ul>
